@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Men's Graphic Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm13869_stone_xl?w=900&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 20.99,
+    "sizes": ["S", "XL"],
+    "color": "Black"
+  },
+  {
+    "id": 2,
+    "name": "Men's Full-Zip Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm14121_ecru_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 35.99,
+    "sizes": ["M", "L", "XL", "XXL"],
+    "color": "Blue"
+  },
+  {
+    "id": 3,
+    "name": "Men's Tech Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm14174_stone_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 49.99,
+    "sizes": ["S", "XL", "XXL"],
+    "color": "Denim"
+  },
+  {
+    "id": 4,
+    "name": "Men's Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm14865_ecru_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 39.99,
+    "sizes": ["M", "L", "XL"],
+    "color": "Gray"
+  },
+  {
+    "id": 5,
+    "name": "Men's Sherpa-Lined Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm14162_red_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 79.99,
+    "sizes": ["M", "L", "XL"],
+    "color": "White"
+  },
+  {
+    "id": 6,
+    "name": "Men's Jacket",
+    "image": "https://media.boohoo.com/i/boohoo/bmm21270_slate%20blue_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 79.99,
+    "sizes": ["S", "M", "XL"],
+    "color": "Black"
+  },
+  {
+    "id": 7,
+    "name": "Men's Heavyweight Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm31987_red_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 29.99,
+    "sizes": ["XS", "S", "M"],
+    "color": "Red"
+  },
+  {
+    "id": 8,
+    "name": "Men's Pullover Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm31988_yellow_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 39.99,
+    "sizes": ["XS", "S", "M", "L"],
+    "color": "Khaki"
+  },
+  {
+    "id": 9,
+    "name": "Men's Hooded Sweatshirt",
+    "image": "https://media.boohoo.com/i/boohoo/bmm38149_forest_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 49.99,
+    "sizes": ["XS", "M", "L"],
+    "color": "Silver"
+  },
+  {
+    "id": 10,
+    "name": "Men's Pocket Hoodie",
+    "image": "https://media.boohoo.com/i/boohoo/bmm31353_burnt%20orange_xl?w=675&qlt=default&fmt.jp2.qlt=70&fmt=auto&sm=fit",
+    "price": 29.99,
+    "sizes": ["XS", "S", "L"],
+    "color": "Brown"
+  }
+]
