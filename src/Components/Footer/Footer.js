@@ -2,9 +2,6 @@ import React from "react";
 import style from "./Footer.module.css";
 
 const Footer = (props) => {
-  const img =
-    "https://www.boohooman.com/on/demandware.static/-/Library-Sites-boohooman-content-global/default/dw72d9e1ef/images/payment-method-icons/NEW_PAYMENT_UK-DESK2.svg";
-
   return (
     <div className={style.container}>
       <div className={style.wrapper}>

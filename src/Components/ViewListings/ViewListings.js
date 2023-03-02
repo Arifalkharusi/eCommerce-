@@ -62,7 +62,7 @@ const ViewListings = ({ data, closeOverlay, pushToCart }) => {
             onClick={exitOverlay}
           ></i>
           <div className={style.leftsec}>
-            <img src={data.image} />
+            <img src={data.image} alt="" />
           </div>
           <div className={style.rightsec}>
             <div className={style.name}>{data.name}</div>

@@ -48,7 +48,7 @@ const Checkout = ({ checkoutData, onDeleteItem, editFunc }) => {
             checkoutData.map((x, i) => (
               <div className={style.cartlisting}>
                 <div className={style.item}>
-                  <img src={x.image} />
+                  <img src={x.image} alt="" />
                   <div className={style.listinfo}>
                     <div className={style.name}>{x.name}</div>
                     <div className={style.color}>
