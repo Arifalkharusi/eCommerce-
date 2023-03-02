@@ -9,10 +9,28 @@ body {
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
+  width: 100%;
+}
+#root {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  height: 100px;
 }
 
 .container {
   padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+  align-self: center;
 }
 
 .container h3 {
@@ -20,161 +38,12 @@ body {
 }
 
 .listings {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.listing {
-  max-width: 250px;
-  width: 100%;
-  margin: 10px;
-  text-align: center;
-  background-color: #f7f7f7; /* Light gray background color */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadows */
-}
-.listing div {
   display: flex;
-  margin: 5px;
-  gap: 5px;
-}
-.listing input {
-  width: 50px;
-  padding: 5px;
-}
-
-.listing img {
-  width: 100%;
-  height: auto;
-  object-fit: cover; /* Cover the entire container with the image */
-  filter: brightness(70%); /* Reduce the brightness of the image */
-}
-
-.listing h2 {
-  margin-top: 10px;
-  font-size: 18px;
-  font-weight: 600; /* Make the heading bolder */
-  color: #333; /* Dark gray text color */
-}
-
-.listing p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #666; /* Light gray text color */
-}
-
-.add-to-cart {
-  background-color: #000000; /* Green */
-  border: none;
-  color: white;
-  width: 100%;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-
-  cursor: pointer;
-}
-
-.add-to-cart:hover,
-.cart:hover,
-.bot-checkout button:hover {
-  background: rgb(24, 24, 24);
-}
-
-.cart {
-  position: fixed;
-  right: 0;
-  top: 0;
-  padding: 20px;
-  height: 70px;
-  width: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  background: black;
-  border-radius: 50%;
-  cursor: pointer;
-  color: white;
-  font-size: 18px;
-  z-index: 5;
-}
-
-.checkout {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  width: 450px;
-  gap: 20px;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  padding: 30px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-  z-index: 2;
-  background: white;
-  padding-top: 100px;
-  justify-content: space-between;
-  text-align: center;
-}
-
-.cart-item {
-  overflow: scroll;
-  scrollbar-width: 0;
-}
-.cart-item::-webkit-scrollbar {
-  display: none;
-}
-
-.bot-checkout {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100px;
-}
-.bot-checkout button {
-  border: none;
-  background: black;
-  padding: 20px;
-  color: white;
-  cursor: pointer;
-}
-.bot-checkout > div {
-  display: flex;
-  justify-content: space-between;
-}
-
-.bot-checkout h1 {
-  font-size: 16px;
-}
-
-.cart-listing {
-  background: #f7f7f7;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
   gap: 10px;
-  margin-bottom: 5px;
-  text-align: end;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.cart-listing div {
-  display: flex;
-  gap: 5px;
-}
-
-.cart-listing h1 {
-  font-size: 20px;
-}
-.cart-listing button {
-  border: none;
-  align-self: flex-end;
-  cursor: pointer;
-  color: red;
-  font-size: 16px;
-}
 .filter {
   display: flex;
   padding-left: 10px;
@@ -206,45 +75,12 @@ body {
   border: none;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 490px) {
   .listings {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 840px) {
-  .listings {
+    display: grid;
+    gap: 10px;
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .checkout {
-    width: 100%;
-  }
-}
-
-@media (max-width: 560px) {
-  .filter h1 {
-    font-size: 16px;
-  }
-
-  .cart {
-    height: 50px;
-    width: 50px;
-    font-size: 16px;
-  }
-
-  .filter div {
-    cursor: pointer;
-    font-size: 10px;
-    width: 20px;
-    height: 20px;
-    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    border: 2px solid grey;
-  }
-
-  .listings {
-    grid-template-columns: repeat(1, 1fr);
   }
 }

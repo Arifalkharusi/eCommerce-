@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(47, 47, 47);
+  margin-top: 50px;
+  padding: 50px 0;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: white;
+  gap: 50px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.topsection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.topsection > * {
+  flex-basis: 100%;
+}
+.topsection form > div {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.topsection form input {
+  border: none;
+  max-width: 250px;
+  width: 100%;
+  padding: 5px 20px;
+  height: 40px;
+}
+.topsection form input:focus {
+  outline: none;
+}
+.topsection form button {
+  height: 40px;
+  max-width: 100px;
+  width: 100%;
+  border: none;
+  background: rgb(71, 71, 71);
+  color: inherit;
+  cursor: pointer;
+}
+.topsection form button:hover {
+  background: rgb(47, 47, 47);
+}
+
+.topsection .icons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.topsection .icons i {
+  background: white;
+  color: rgb(47, 47, 47);
+  height: 40px;
+  width: 40px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.topsection .icons i:hover {
+  background: rgb(151, 151, 151);
+}
+
+.botsection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.botsection img {
+  width: 400px;
+}

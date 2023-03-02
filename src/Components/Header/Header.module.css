@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgb(47, 47, 47);
+  color: white;
+}
+.container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.container > div {
+  flex-basis: 100%;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.icons i {
+  cursor: pointer;
+  padding: 20px;
+  font-size: 25px;
+}
+.links {
+  text-decoration: none;
+  color: inherit;
+}
+@media (max-width: 550px) {
+  .logo h1 {
+    font-size: 20px;
+  }
+}

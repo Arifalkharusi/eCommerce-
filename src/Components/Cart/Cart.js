@@ -1,16 +1,9 @@
 import React from "react";
 
-let open = false;
-
 const Cart = (props) => {
   // open & closes cart
-  const openCart = () => {
-    !open ? (open = true) : (open = false);
-    props.onOpenCart(open);
-  };
-
   return (
-    <div className="cart" onClick={openCart}>
+    <div className="cart">
       <i className="fa-solid fa-cart-shopping">
         {props.cartCount > 0 ? props.cartCount : null}
       </i>
