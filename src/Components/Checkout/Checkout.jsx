@@ -5,7 +5,7 @@ import CartItem from "../CartItem/CartItem";
 import { useSelector } from "react-redux";
 
 const Checkout = (props) => {
-  const { cartItems, edit, index } = useSelector((state) => state.cartSlice);
+  const { cartItems, edit } = useSelector((state) => state.cartSlice);
 
   let total = 0;
   // adds up the total
@@ -13,7 +13,7 @@ const Checkout = (props) => {
 
   return (
     <div className={style.checkout}>
-      {edit && <EditListings data={cartItems[index]} />}
+      {edit && <EditListings />}
       <div className={style.cartitem}>
         <div className={style.banner}>
           <div>ITEM</div>

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import style from "./EditListings.module.css";
 import { editItemInCart, openEdit } from "../../store/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-const EditListings = ({ data }) => {
+const EditListings = (props) => {
+  const { cartItems, index } = useSelector((state) => state.cartSlice);
   const dispatch = useDispatch();
-
+  const data = cartItems[index];
   const [color, setColor] = useState(``);
   const [size, setSize] = useState(``);
   const [qty, setQty] = useState(data.quantity);
