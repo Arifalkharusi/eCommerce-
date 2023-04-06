@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Listings.module.css";
 import { useDispatch } from "react-redux";
-import { setItem } from "../../store/selectItem";
+import { setItem } from "../../store/itemSlice";
 
 const Listings = ({ data, index }) => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const Listings = ({ data, index }) => {
   return (
     <div
       className={style.listing}
-      onClick={() => dispatch(setItem({ index: index, boolean: true }))}
+      onClick={() => dispatch(setItem({ index: index, open: true }))}
     >
       <img src={data.image} alt="Men's T-Shirt" />
       <div className={style.title}>{data.name}</div>

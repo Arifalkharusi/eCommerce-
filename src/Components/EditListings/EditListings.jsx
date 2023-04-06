@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import style from "./EditListings.module.css";
+import { editItemInCart, openEdit } from "../../store/cartSlice";
+import { useDispatch } from "react-redux";
 
-const EditListings = ({ data, closeOverlay, hello }) => {
+const EditListings = ({ data }) => {
+  const dispatch = useDispatch();
+
   const [color, setColor] = useState(``);
   const [size, setSize] = useState(``);
   const [qty, setQty] = useState(data.quantity);
@@ -20,15 +24,11 @@ const EditListings = ({ data, closeOverlay, hello }) => {
         price: data.price,
         quantity: qty,
       };
-      hello(obj);
-      closeOverlay(false);
+      dispatch(editItemInCart(obj));
+      dispatch(openEdit());
     } else {
       setSelected(true);
     }
-  };
-
-  const exitOverlay = () => {
-    closeOverlay(false);
   };
 
   const selectedColor = (index, e) => {
@@ -59,7 +59,7 @@ const EditListings = ({ data, closeOverlay, hello }) => {
         <div className={style.main}>
           <i
             className={`${style.close} fa-solid fa-xmark`}
-            onClick={exitOverlay}
+            onClick={() => dispatch(openEdit())}
           ></i>
           <div className={style.leftsec}>
             <img src={data.image} alt="" />

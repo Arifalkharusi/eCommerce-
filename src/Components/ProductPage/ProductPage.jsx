@@ -1,11 +1,7 @@
 import React from "react";
-import ViewListings from "../ViewListings/ViewListings";
+
 const ProductPage = (props) => {
-  return (
-    <div>
-      <ViewListings />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default ProductPage;

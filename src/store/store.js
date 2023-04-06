@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import selectItem from "./selectItem";
+import itemSlice from "./itemSlice";
 import filterSlice from "./filterSlice";
 import dataSlice from "./dataSlice";
+import cartSlice from "./cartSlice";
 
 export const store = configureStore({
-  reducer: { selectItem, filterSlice, dataSlice },
+  reducer: { itemSlice, filterSlice, dataSlice, cartSlice },
 });

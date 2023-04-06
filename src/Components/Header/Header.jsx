@@ -1,9 +1,11 @@
 import React from "react";
 import style from "./Header.module.css";
-import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Header = ({ data }) => {
+const Header = (props) => {
+  const { cartItems } = useSelector((state) => state.cartSlice);
+
   return (
     <div className={style.wrapper}>
       <div className={style.container}>
@@ -14,7 +16,11 @@ const Header = ({ data }) => {
         </div>
         <div className={style.icons}>
           <Link className={style.links} to="/cart">
-            <Cart cartCount={data.length} />
+            <div className="cart">
+              <i className="fa-solid fa-cart-shopping">
+                {cartItems.length > 0 ? cartItems.length : null}
+              </i>
+            </div>
           </Link>
         </div>
       </div>

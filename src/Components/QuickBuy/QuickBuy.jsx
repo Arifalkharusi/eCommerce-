@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import style from "./ViewListings.module.css";
+import style from "./QuickBuy.module.css";
 import { useDispatch } from "react-redux";
-import { setItem } from "../../store/selectItem";
+import { setItem } from "../../store/itemSlice";
+import { addToCart } from "../../store/cartSlice";
 
-const ViewListings = ({ data, pushToCart }) => {
+const ViewListings = ({ data }) => {
   const dispatch = useDispatch();
   const [color, setColor] = useState(``);
   const [size, setSize] = useState(``);
   const [qty, setQty] = useState("1");
   const [selected, setSelected] = useState(false);
 
-  const addToCart = (e) => {
+  const addCart = (e) => {
     e.preventDefault();
 
     if (color !== `` && size !== ``) {
@@ -24,7 +25,7 @@ const ViewListings = ({ data, pushToCart }) => {
         price: data.price,
         quantity: qty,
       };
-      pushToCart(obj, data.id);
+      dispatch(addToCart(obj));
       dispatch(setItem({ boolean: false }));
     } else {
       setSelected(true);
@@ -100,7 +101,7 @@ const ViewListings = ({ data, pushToCart }) => {
                 </div>
               ))}
             </div>
-            <form onSubmit={addToCart}>
+            <form onSubmit={addCart}>
               <div className={style.quantity}>
                 <div>QUANTITY</div>
                 <input
