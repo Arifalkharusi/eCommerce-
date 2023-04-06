@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import style from "./ViewListings.module.css";
-const ViewListings = ({ data, closeOverlay, pushToCart }) => {
+import { useDispatch } from "react-redux";
+import { setItem } from "../../store/selectItem";
+
+const ViewListings = ({ data, pushToCart }) => {
+  const dispatch = useDispatch();
   const [color, setColor] = useState(``);
   const [size, setSize] = useState(``);
   const [qty, setQty] = useState("1");
@@ -21,14 +25,14 @@ const ViewListings = ({ data, closeOverlay, pushToCart }) => {
         quantity: qty,
       };
       pushToCart(obj, data.id);
-      closeOverlay(false);
+      dispatch(setItem({ boolean: false }));
     } else {
       setSelected(true);
     }
   };
 
   const exitOverlay = () => {
-    closeOverlay(false);
+    dispatch(setItem({ boolean: false }));
   };
 
   const selectedColor = (index, e) => {
