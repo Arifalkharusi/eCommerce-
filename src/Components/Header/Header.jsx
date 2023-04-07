@@ -16,10 +16,9 @@ const Header = (props) => {
         </div>
         <div className={style.icons}>
           <Link className={style.links} to="/cart">
-            <div className="cart">
-              <i className="fa-solid fa-cart-shopping">
-                {cartItems.length > 0 ? cartItems.length : null}
-              </i>
+            <div className={style.cart}>
+              <i className="fa-solid fa-cart-shopping"></i>
+              <div>{cartItems.length > 0 ? cartItems.length : null}</div>
             </div>
           </Link>
         </div>

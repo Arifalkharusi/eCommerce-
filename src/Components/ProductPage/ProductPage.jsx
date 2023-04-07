@@ -5,19 +5,32 @@ import { setItem } from "../../store/itemSlice";
 import { addToCart } from "../../store/cartSlice";
 import { cartItem, setSelect } from "../../store/cartItemSlice";
 
-const ProductPage = ({ data }) => {
+const ProductPage = (props) => {
   const { cartData, select } = useSelector((state) => state.cartItemSlice);
+  const { items } = useSelector((state) => state.dataSlice);
   const { index } = useSelector((state) => state.itemSlice);
   const dispatch = useDispatch();
 
+  const data = items[index];
+
   useEffect(() => {
-    dispatch(cartItem({ ...data, selColor: "", selSizes: "", quantity: 1 }));
+    dispatch(
+      cartItem({
+        ...data,
+        selColor: "Select Color",
+        selSizes: "Select Size",
+        quantity: 1,
+      })
+    );
   }, [dispatch, data]);
 
   const addCart = (e) => {
     e.preventDefault();
 
-    if (cartData.selColor !== "" && cartData.selSizes !== "") {
+    if (
+      cartData.selColor !== "Select Color" &&
+      cartData.selSizes !== "Select Size"
+    ) {
       dispatch(addToCart(cartData));
       dispatch(setItem({ index, open: false }));
     } else {
