@@ -9,6 +9,7 @@ import Filter from "./Components/Filter/Filter";
 // Routes
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ProductPage from "./Components/ProductPage/ProductPage";
 
 function App() {
   // states
@@ -27,7 +28,7 @@ function App() {
       <h3>{items.length} Product(s) found</h3>
       <div className="listings">
         {items.map((x, i) => (
-          <Listings data={x} key={x.id} index={i} />
+          <Listings data={x} key={x.id} i={i} />
         ))}
       </div>
     </>
@@ -41,6 +42,10 @@ function App() {
         {open && <QuickBuy data={items[index]} />}
         <Routes>
           <Route path="/" element={mainElelment} />
+          <Route
+            path="/product/*"
+            element={<ProductPage data={items[index]} />}
+          />
           <Route path="/cart" element={<Checkout editFunc={editItem} />} />
         </Routes>
         <div className="footer"></div>

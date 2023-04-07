@@ -8,6 +8,7 @@
   width: 100%;
   background: rgb(47, 47, 47);
   color: white;
+  z-index: 99;
 }
 .container {
   max-width: 1200px;

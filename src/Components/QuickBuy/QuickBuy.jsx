@@ -1,39 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import style from "./QuickBuy.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setItem } from "../../store/itemSlice";
 import { addToCart } from "../../store/cartSlice";
+import { cartItem, setSelect } from "../../store/cartItemSlice";
 
 const ViewListings = ({ data }) => {
+  const { cartData, select } = useSelector((state) => state.cartItemSlice);
+  const { index } = useSelector((state) => state.itemSlice);
   const dispatch = useDispatch();
-  const [color, setColor] = useState(``);
-  const [size, setSize] = useState(``);
-  const [qty, setQty] = useState("1");
-  const [selected, setSelected] = useState(false);
+
+  useEffect(() => {
+    dispatch(cartItem({ ...data, selColor: "", selSizes: "", quantity: 1 }));
+  }, [dispatch, data]);
 
   const addCart = (e) => {
     e.preventDefault();
 
-    if (color !== `` && size !== ``) {
-      let obj = {
-        image: data.image,
-        name: data.name,
-        color: data.color,
-        selColor: color,
-        selSizes: size,
-        sizes: data.sizes,
-        price: data.price,
-        quantity: qty,
-      };
-      dispatch(addToCart(obj));
-      dispatch(setItem({ boolean: false }));
+    if (cartData.selColor !== "" && cartData.selSizes !== "") {
+      dispatch(addToCart(cartData));
+      dispatch(setItem({ index, open: false }));
     } else {
-      setSelected(true);
+      dispatch(setSelect());
     }
-  };
-
-  const exitOverlay = () => {
-    dispatch(setItem({ boolean: false }));
   };
 
   const selectedColor = (index, e) => {
@@ -42,8 +31,7 @@ const ViewListings = ({ data }) => {
         x.classList.remove(style.selected)
       );
       e.target.parentElement.classList.add(style.selected);
-      setColor(data.color[index]);
-      setSelected(false);
+      dispatch(cartItem({ ...cartData, selColor: data.color[index] }));
     }
   };
 
@@ -53,8 +41,7 @@ const ViewListings = ({ data }) => {
         x.classList.remove(style.selected)
       );
       e.target.parentElement.classList.add(style.selected);
-      setSize(data.sizes[index]);
-      setSelected(false);
+      dispatch(cartItem({ ...cartData, selSizes: data.sizes[index] }));
     }
   };
 
@@ -64,7 +51,7 @@ const ViewListings = ({ data }) => {
         <div className={style.main}>
           <i
             className={`${style.close} fa-solid fa-xmark`}
-            onClick={exitOverlay}
+            onClick={() => dispatch(setItem({ index, open: false }))}
           ></i>
           <div className={style.leftsec}>
             <img src={data.image} alt="" />
@@ -73,7 +60,7 @@ const ViewListings = ({ data }) => {
             <div className={style.name}>{data.name}</div>
             <div className={style.price}>£{data.price}</div>
             <div className={style.colortag}>
-              COLOR: <span>{color}</span>
+              COLOR: <span>{cartData.selColor}</span>
             </div>
             <div className={style.colorselector}>
               {data.color.map((x, i) => (
@@ -89,7 +76,7 @@ const ViewListings = ({ data }) => {
               ))}
             </div>
             <div className={style.sizetag}>
-              SIZE: <span>{size}</span>
+              SIZE: <span>{cartData.selSizes}</span>
             </div>
             <div className={style.sizeselector}>
               {data.sizes.map((x, i) => (
@@ -106,13 +93,19 @@ const ViewListings = ({ data }) => {
                 <div>QUANTITY</div>
                 <input
                   type="number"
-                  value={qty}
-                  onChange={(e) => setQty(e.target.value)}
+                  min={1}
+                  max={10}
+                  value={cartData.quantity}
+                  onChange={(e) =>
+                    dispatch(
+                      cartItem({ ...cartData, quantity: e.target.value })
+                    )
+                  }
                 ></input>
               </div>
               <button type="submit">ADD TO CART</button>
             </form>
-            {selected && (
+            {select && (
               <div className={style.auth}>*Please select color and size!*</div>
             )}
           </div>

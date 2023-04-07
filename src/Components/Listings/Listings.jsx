@@ -1,23 +1,33 @@
 import React from "react";
 import style from "./Listings.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setItem } from "../../store/itemSlice";
+import { Link } from "react-router-dom";
 
-const Listings = ({ data, index }) => {
+const Listings = ({ data, i }) => {
   const dispatch = useDispatch();
-  // const selectedHandler = () => {
-  //   listIndex(index);
-  //   openOverlay(true);
-  // };
-
+  const { index } = useSelector((state) => state.itemSlice);
+  const { items } = useSelector((state) => state.dataSlice);
   return (
-    <div
-      className={style.listing}
-      onClick={() => dispatch(setItem({ index: index, open: true }))}
-    >
-      <img src={data.image} alt="Men's T-Shirt" />
-      <div className={style.title}>{data.name}</div>
-      <div className={style.price}>£{data.price}</div>
+    <div className={style.listing}>
+      <Link
+        className={style.link}
+        to={`/product/${items[index].name}`}
+        onClick={() => dispatch(setItem({ index: i, open: false }))}
+      >
+        <div className={style.listing}>
+          <img src={data.image} alt="Men's T-Shirt" />
+
+          <div className={style.title}>{data.name}</div>
+          <div className={style.price}>£{data.price}</div>
+        </div>
+      </Link>
+      <div
+        className={style.quickbuy}
+        onClick={() => dispatch(setItem({ index: i, open: true }))}
+      >
+        QUICK BUY
+      </div>
     </div>
   );
 };
