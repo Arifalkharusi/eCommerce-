@@ -1,118 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import Product from "../Product/Product";
+import Listings from "../Listings/Listings";
 import style from "./ProductPage.module.css";
-import { useDispatch, useSelector } from "react-redux";
-import { setItem } from "../../store/itemSlice";
-import { addToCart } from "../../store/cartSlice";
-import { cartItem, setSelect } from "../../store/cartItemSlice";
+import { useSelector } from "react-redux";
 
 const ProductPage = (props) => {
-  const { cartData, select } = useSelector((state) => state.cartItemSlice);
   const { items } = useSelector((state) => state.dataSlice);
-  const { index } = useSelector((state) => state.itemSlice);
-  const dispatch = useDispatch();
+  const [move, setMove] = useState(0);
 
-  const data = items[index];
-
-  useEffect(() => {
-    dispatch(
-      cartItem({
-        ...data,
-        selColor: "Select Color",
-        selSizes: "Select Size",
-        quantity: 1,
-      })
-    );
-  }, [dispatch, data]);
-
-  const addCart = (e) => {
-    e.preventDefault();
-
-    if (
-      cartData.selColor !== "Select Color" &&
-      cartData.selSizes !== "Select Size"
-    ) {
-      dispatch(addToCart(cartData));
-      dispatch(setItem({ index, open: false }));
-    } else {
-      dispatch(setSelect());
-    }
-  };
-
-  const selectedColor = (index, e) => {
-    if (e.target.classList.contains(style.color)) {
-      e.target.parentElement.parentElement.childNodes.forEach((x) =>
-        x.classList.remove(style.selected)
-      );
-      e.target.parentElement.classList.add(style.selected);
-      dispatch(cartItem({ ...cartData, selColor: data.color[index] }));
-    }
-  };
-
-  const selectedSize = (index, e) => {
-    if (e.target.classList.contains(style.size)) {
-      e.target.parentElement.parentElement.childNodes.forEach((x) =>
-        x.classList.remove(style.selected)
-      );
-      e.target.parentElement.classList.add(style.selected);
-      dispatch(cartItem({ ...cartData, selSizes: data.sizes[index] }));
-    }
+  const sliderHandler = (value) => {
+    if (value === "left" && move > 0) setMove(move - 1);
+    if (value === "right" && move < 2) setMove(move + 1);
   };
 
   return (
-    <div className={style.main}>
-      <div className={style.leftsec}>
-        <img src={data.image} alt="" />
-      </div>
-      <div className={style.rightsec}>
-        <div className={style.name}>{data.name}</div>
-        <div className={style.price}>£{data.price}</div>
-        <div className={style.colortag}>
-          COLOR: <span>{cartData.selColor}</span>
+    <div>
+      <Product />
+      <div>Products you might like...</div>
+      <div className={style.div}>
+        <button direction="left" onClick={() => sliderHandler("left")}>
+          &lt;
+        </button>
+        <div style={{ transform: `translateX(-${move * 100}%)` }}>
+          {items.map((x, i) => {
+            if (i > 10) return;
+            return <Listings data={x} key={x.id} i={i} />;
+          })}
         </div>
-        <div className={style.colorselector}>
-          {data.color.map((x, i) => (
-            <div
-              className={style.selectwrapper}
-              onClick={(e) => selectedColor(i, e)}
-            >
-              <div
-                className={style.color}
-                style={{ background: `${x.toLowerCase()}` }}
-              ></div>
-            </div>
-          ))}
-        </div>
-        <div className={style.sizetag}>
-          SIZE: <span>{cartData.selSizes}</span>
-        </div>
-        <div className={style.sizeselector}>
-          {data.sizes.map((x, i) => (
-            <div
-              className={style.selectwrapper}
-              onClick={(e) => selectedSize(i, e)}
-            >
-              <div className={style.size}>{x}</div>
-            </div>
-          ))}
-        </div>
-        <form onSubmit={addCart}>
-          <div className={style.quantity}>
-            <div>QUANTITY</div>
-            <input
-              type="number"
-              min={1}
-              max={10}
-              value={cartData.quantity}
-              onChange={(e) =>
-                dispatch(cartItem({ ...cartData, quantity: e.target.value }))
-              }
-            ></input>
-          </div>
-          <button type="submit">ADD TO CART</button>
-        </form>
-        {select && (
-          <div className={style.auth}>*Please select color and size!*</div>
-        )}
+        <button direction="right" onClick={() => sliderHandler("right")}>
+          &gt;
+        </button>
       </div>
     </div>
   );
