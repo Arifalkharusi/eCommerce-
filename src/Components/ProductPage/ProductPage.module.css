@@ -1,11 +1,11 @@
-.div {
+.slider {
   width: 100%;
   gap: 20px;
   overflow: hidden;
   position: relative;
 }
 
-.div button {
+.slider button {
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
@@ -16,23 +16,23 @@
   background: rgba(255, 255, 255, 0.5);
   transition: all 0.25s;
 }
-.div button:hover {
+.slider button:hover {
   background: rgb(255, 255, 255);
 }
-.div button[direction="left"] {
+.slider button[direction="left"] {
   left: 2px;
   z-index: 100;
 }
-.div button[direction="right"] {
+.slider button[direction="right"] {
   right: 2px;
 }
 
-.div > div {
+.slider > div {
   display: flex;
   gap: 20px;
   transition: all 0.5s ease;
 }
-.div > div > div {
+.slider > div > div {
   flex: none;
 }
 .recom {
