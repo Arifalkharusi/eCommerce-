@@ -3,7 +3,6 @@
   flex-direction: column;
   max-width: 200px;
   width: 100%;
-  margin: 10px;
   text-align: center;
   justify-content: center;
   cursor: pointer;
@@ -34,7 +33,7 @@
   display: none;
   position: absolute;
   bottom: 90px;
-  left: 55%;
+  left: 50%;
   transform: translateX(-50%);
   background: black;
   color: white;

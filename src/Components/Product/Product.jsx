@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import style from "./Product.module.css";
+import ReactImageMagnify from "react-image-magnify";
 import { useDispatch, useSelector } from "react-redux";
 import { setItem } from "../../store/itemSlice";
 import { addToCart } from "../../store/cartSlice";
@@ -12,13 +13,13 @@ const Product = (props) => {
   const dispatch = useDispatch();
 
   const data = items[index];
-
+  const selectText = "Please Select";
   useEffect(() => {
     dispatch(
       cartItem({
         ...data,
-        selColor: "Select Color",
-        selSizes: "Select Size",
+        selColor: selectText,
+        selSizes: selectText,
         quantity: 1,
       })
     );
@@ -27,10 +28,7 @@ const Product = (props) => {
   const addCart = (e) => {
     e.preventDefault();
 
-    if (
-      cartData.selColor !== "Select Color" &&
-      cartData.selSizes !== "Select Size"
-    ) {
+    if (cartData.selColor !== selectText && cartData.selSizes !== selectText) {
       dispatch(addToCart(cartData));
       dispatch(setItem({ index, open: false }));
     } else {
@@ -60,7 +58,21 @@ const Product = (props) => {
   return (
     <div className={style.main}>
       <div className={style.leftsec}>
-        <img src={data.image} alt="" />
+        <ReactImageMagnify
+          {...{
+            smallImage: {
+              alt: "Wristwatch by Ted Baker London",
+              isFluidWidth: true,
+              src: data.image,
+            },
+            largeImage: {
+              src: data.image,
+              width: 1200,
+              height: 1800,
+            },
+            isHintEnabled: true,
+          }}
+        />
       </div>
       <div className={style.rightsec}>
         <div className={style.name}>{data.name}</div>

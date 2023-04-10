@@ -7,33 +7,46 @@
 
 .div button {
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: white;
-  font-size: 50px;
   cursor: pointer;
   padding: 20px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.5);
   transition: all 0.25s;
-  height: 91%;
 }
 .div button:hover {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(255, 255, 255);
 }
 .div button[direction="left"] {
-  left: 0;
+  left: 2px;
   z-index: 100;
 }
 .div button[direction="right"] {
-  right: 0;
+  right: 2px;
 }
 
 .div > div {
   display: flex;
-  transition: all 1s;
+  gap: 20px;
+  transition: all 0.5s ease;
 }
 .div > div > div {
   flex: none;
+}
+.recom {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+.recomtitle {
+  border: 2px solid grey;
+  border-bottom: none;
+  padding: 20px;
+  min-width: 230px;
+}
+.recomline {
+  border-bottom: 2px solid grey;
+  width: 100%;
 }
