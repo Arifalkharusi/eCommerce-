@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import style from "./Product.module.css";
-import ReactImageMagnify from "react-image-magnify";
 import { useDispatch, useSelector } from "react-redux";
 import { setItem } from "../../store/itemSlice";
 import { addToCart } from "../../store/cartSlice";
@@ -58,21 +57,7 @@ const Product = (props) => {
   return (
     <div className={style.main}>
       <div className={style.leftsec}>
-        <ReactImageMagnify
-          {...{
-            smallImage: {
-              alt: "Wristwatch by Ted Baker London",
-              isFluidWidth: true,
-              src: data.image,
-            },
-            largeImage: {
-              src: data.image,
-              width: 1200,
-              height: 1800,
-            },
-            isHintEnabled: true,
-          }}
-        />
+        <img src={data.image} alt="" />
       </div>
       <div className={style.rightsec}>
         <div className={style.name}>{data.name}</div>

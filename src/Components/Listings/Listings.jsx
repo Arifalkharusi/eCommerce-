@@ -8,12 +8,18 @@ const Listings = ({ data, i }) => {
   const dispatch = useDispatch();
   const { index } = useSelector((state) => state.itemSlice);
   const { items } = useSelector((state) => state.dataSlice);
+
+  const selectHandler = () => {
+    dispatch(setItem({ index: i, open: false }));
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className={style.listing}>
       <Link
         className={style.link}
         to={`/product/${items[index].name}`}
-        onClick={() => dispatch(setItem({ index: i, open: false }))}
+        onClick={selectHandler}
       >
         <div className={style.listing}>
           <img src={data.image} alt="Men's T-Shirt" />
